@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=MainWorld
+comment0.text=\r\n\ This\ class\ is\ a\ blueprint\ for\ World.\r\n\ \r\n\ The\ frog\ named\ 'Freddy'\ lands\ on\ an\ unknown\ planet.\ He\ found\ some\ mushrooms\ \r\n\ scattered.\ Since\ freddy\ is\ hungry,\ he\ decides\ to\ eat\ them.\ \r\n\ Suddendly,\ a\ 3-eyed\ monster\ started\ to\ chase\ Freddy.\ Freddy\ has\ to\r\n\ run\ for\ its\ life\ and\ also\ eat\ all\ the\ mushrooms\ at\ the\ same\ time.\r\n\ \r\n\ Point\ system\ will\ be\ added\ during\ the\ second\ assessment.\r\n\ \r\n\ @author\ Akash\ Banjade\ \r\n\ @version\ 1.1\r\n\r\n
+comment1.params=
+comment1.target=MainWorld()
+comment1.text=\r\n\ Create\ the\ world.\ The\ world\ has\ a\ size\ of\ 800x600\ cells,\ where\ every\ cell\ is\ just\ 1\ pixel.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ prepare()
+comment3.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\ \r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
+numComments=4
