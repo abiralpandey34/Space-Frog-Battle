@@ -11,6 +11,7 @@ public class Alien extends Actor
     Frog frog;
     public int alienSpeed = 3;
     
+    //Passing the context
     public Alien(Frog frog){
         this.frog = frog;
     };
@@ -21,8 +22,9 @@ public class Alien extends Actor
      */
     public void act()
     {
-        move(2);
+        move(alienSpeed);
+        
+        //This below line is what enables alien to chase frog continously.
         turnTowards(this.frog.getX(), this.frog.getY());
-        //world.turnAlienTowardFrog();
     }
 }

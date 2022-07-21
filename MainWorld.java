@@ -39,20 +39,28 @@ public class MainWorld extends World
         
         foodCount.setValue(0);
         addObject(foodCount, 100,50);
+        
         prepare();
     }
     
     public void act(){
+        
+        //Counter condition to decrease time count.
         if(time.millisElapsed() > 1000){
             timeCount.add(-1);
-            time.mark();
+            if(timeCount.getValue()==3) Greenfoot.playSound("countdown.wav");
+            time.mark(); 
         }
         
+        //  In case all mushroom objects gets deleted (frog ate all of them),
+        //  Below line gets executed. 
         if (getObjects(Mushroom.class).isEmpty()) showMessage("congrat.png");        
-        
+           
+        //Check if Timeout has reached.
         checkTimeout();
     }
- 
+    
+     //This method gets executed when the time is up.
     public void checkTimeout(){
         if(timeCount.getValue()<0) {
             //Time over code here
@@ -61,12 +69,14 @@ public class MainWorld extends World
         }
     }
     
-    public void showMessage(String string){
-        if(string.equals("gameover.png")) Greenfoot.playSound("gameover.wav");
+    // This is an utility method which will show 
+    // gameover/congrats image along with sound
+    public void showMessage(String value){
+        if(value.equals("gameover.png")) Greenfoot.playSound("gameover.wav");
         else Greenfoot.playSound("congrat.wav");
         
         removeObjects(getObjects(null));
-        GreenfootImage bg = new GreenfootImage(string);
+        GreenfootImage bg = new GreenfootImage(value);
         bg.scale(getWidth(), getHeight());
         setBackground(bg);
         
@@ -81,10 +91,7 @@ public class MainWorld extends World
     private void prepare()
     {
         addObject(freddy, 100, 400);
-        //addObject(new ScoreBoard(800, 600), getWidth() / 2, getHeight() / 2); 
-
         addObject(alien, 1000, 200);
-        //turnAlienTowardFrog();
         
         Mushroom mushroom2 = new Mushroom(freddy);
         addObject(mushroom2,642,156);        

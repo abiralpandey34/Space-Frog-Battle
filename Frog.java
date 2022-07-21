@@ -32,12 +32,16 @@ public class Frog extends Actor
         //move(2);
     }
     
+    /*This method checks if frog is touching the alien and
+     * shows the "GAME OVER" message when frog gets touched 
+     * by alien  */
     public void getEatenByAlien(){
         Actor alien = getOneObjectAtOffset(0, 0, Alien.class);
-        
         if (alien != null){
-            
+            getWorld().removeObject(null);
+
             //Displaying Gameover Message. 
+            Greenfoot.playSound("gameover.wav");
             GreenfootImage bg = new GreenfootImage("gameover.png");
             bg.scale(getWorld().getWidth(), getWorld().getHeight());
             getWorld().setBackground(bg);
@@ -47,25 +51,26 @@ public class Frog extends Actor
         }
 
     }
-  
+    
+    //Key Listener to listen to Frog Movement user Input.
     public void checkKeyPress(){
         
-        if(Greenfoot.isKeyDown("up")){
+        if(Greenfoot.isKeyDown("up") || Greenfoot.isKeyDown("w")){
             setLocation(getX(), getY()-frogSpeed); 
             setRotation(270);
         }
         
-        if (Greenfoot.isKeyDown("down")){
+        if (Greenfoot.isKeyDown("down") || Greenfoot.isKeyDown("s")){
             setLocation(getX(), getY()+frogSpeed);
             setRotation(90);
             }
             
-        if(Greenfoot.isKeyDown("right")){
+        if(Greenfoot.isKeyDown("right") || Greenfoot.isKeyDown("d")){
             setLocation(getX()+frogSpeed, getY());
             setRotation(0);       
         }
         
-        if(Greenfoot.isKeyDown("left")){
+        if(Greenfoot.isKeyDown("left") || Greenfoot.isKeyDown("a")){
             setLocation(getX()-frogSpeed, getY());
             setRotation(180);      
         }

@@ -10,7 +10,7 @@ public class Mushroom extends Actor
 {
     Frog frog;
     
-    
+    //Passing the context.
     public Mushroom(Frog frog){
         this.frog = frog;
     }
@@ -22,20 +22,26 @@ public class Mushroom extends Actor
     {
         getEatenByFrog();
         if (getWorld() == null) return; 
-    
+
     }
     
+    //THis method increases the Food value when frog eats mushroom,
+    public void increaseFoodCount(int value){
+        MainWorld world = (MainWorld)getWorld(); 
+        int currentFoodCount = world.foodCount.getValue();
+        int newFoodCount = currentFoodCount + value;
+        world.foodCount.setValue(newFoodCount);
+    }
+    
+    //THis method checks if mushroom is being touched by Frog.
     public void getEatenByFrog(){
        Actor frog = getOneObjectAtOffset(0, 0, Frog.class);
         if (frog != null) {
             Greenfoot.playSound("yum.wav");
-            //Changing Food Value when Mushroom gets eaten.
-            MainWorld world = (MainWorld)getWorld();            
-            int currentFoodCount = world.foodCount.getValue();
-            int newFoodCount = currentFoodCount + 5;
-            world.foodCount.setValue(newFoodCount);
+            increaseFoodCount(5);
+            
             //Removing mushroom after mushroom gets eaten.
-            world.removeObject(this);
+            getWorld().removeObject(this);
             
         }   
         
