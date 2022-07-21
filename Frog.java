@@ -26,19 +26,26 @@ public class Frog extends Actor
     {
         checkKeyPress();
         
-        getEatenByAlien();
         if (getWorld() == null) return; 
+        getEatenByAlien();
+
         //move(2);
     }
     
     public void getEatenByAlien(){
-        Actor frog = getOneObjectAtOffset(0, 0, Alien.class);
-        if (frog != null) {
-            try{getWorld().removeObject(this);    }
-            catch(Exception e){
-                 getWorld().addObject(new ScoreBoard(800, 600), 700, 600); 
-            }
+        Actor alien = getOneObjectAtOffset(0, 0, Alien.class);
+        
+        if (alien != null){
+            
+            //Displaying Gameover Message. 
+            GreenfootImage bg = new GreenfootImage("gameover.png");
+            bg.scale(getWorld().getWidth(), getWorld().getHeight());
+            getWorld().setBackground(bg);
+            
+            Greenfoot.stop();
+            return;
         }
+
     }
   
     public void checkKeyPress(){

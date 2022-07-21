@@ -22,10 +22,22 @@ public class Mushroom extends Actor
     {
         getEatenByFrog();
         if (getWorld() == null) return; 
+    
     }
     
     public void getEatenByFrog(){
        Actor frog = getOneObjectAtOffset(0, 0, Frog.class);
-        if (frog != null) getWorld().removeObject(this);
+        if (frog != null) {
+            Greenfoot.playSound("yum.wav");
+            //Changing Food Value when Mushroom gets eaten.
+            MainWorld world = (MainWorld)getWorld();            
+            int currentFoodCount = world.foodCount.getValue();
+            int newFoodCount = currentFoodCount + 5;
+            world.foodCount.setValue(newFoodCount);
+            //Removing mushroom after mushroom gets eaten.
+            world.removeObject(this);
+            
+        }   
+        
     }
 }

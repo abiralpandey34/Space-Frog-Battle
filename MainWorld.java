@@ -23,9 +23,7 @@ public class MainWorld extends World
     
     SimpleTimer time = new SimpleTimer();
     Counter timeCount = new Counter();
-    
-    
-    
+    Counter foodCount = new Counter("Food: ");
     
     
 
@@ -35,10 +33,12 @@ public class MainWorld extends World
     public MainWorld() 
     {
         super(1200, 700, 1);
-        addObject(new Counter(), getWidth()/2, 50);
-        timeCount.setValue(60);
+        addObject(timeCount, getWidth()-100, 50);
+        timeCount.setValue(30);
         timeCount.setPrefix("Time: ");
         
+        foodCount.setValue(0);
+        addObject(foodCount, 100,50);
         prepare();
     }
     
@@ -47,7 +47,32 @@ public class MainWorld extends World
             timeCount.add(-1);
             time.mark();
         }
+        
+        if (getObjects(Mushroom.class).isEmpty()) showMessage("congrat.png");        
+        
+        checkTimeout();
     }
+ 
+    public void checkTimeout(){
+        if(timeCount.getValue()<0) {
+            //Time over code here
+            removeObjects(getObjects(null));     
+            showMessage("gameover.png");
+        }
+    }
+    
+    public void showMessage(String string){
+        if(string.equals("gameover.png")) Greenfoot.playSound("gameover.wav");
+        else Greenfoot.playSound("congrat.wav");
+        
+        removeObjects(getObjects(null));
+        GreenfootImage bg = new GreenfootImage(string);
+        bg.scale(getWidth(), getHeight());
+        setBackground(bg);
+        
+        Greenfoot.stop();
+    }
+
     
     /**
      * Prepare the world for the start of the program. 
@@ -56,17 +81,15 @@ public class MainWorld extends World
     private void prepare()
     {
         addObject(freddy, 100, 400);
+        //addObject(new ScoreBoard(800, 600), getWidth() / 2, getHeight() / 2); 
 
         addObject(alien, 1000, 200);
         //turnAlienTowardFrog();
-
-        addObject(mushroom, 1000, 300);
-        mushroom.setLocation(839,310);
         
-        addObject(mushroom, 1000, 300);
-        mushroom.setLocation(839,310);
         Mushroom mushroom2 = new Mushroom(freddy);
-        addObject(mushroom2,642,156);
+        addObject(mushroom2,642,156);        
+        mushroom2.setLocation(624,210);
+
         Mushroom mushroom3 = new Mushroom(freddy);
         addObject(mushroom3,239,69);
         Mushroom mushroom4 = new Mushroom(freddy);
@@ -105,7 +128,6 @@ public class MainWorld extends World
         addObject(mushroom20,612,312);
         Mushroom mushroom21 = new Mushroom(freddy);
         addObject(mushroom21,617,73);
-        mushroom2.setLocation(624,210);
         mushroom20.setLocation(624,309);
         mushroom19.setLocation(610,442);
         mushroom17.setLocation(489,578);
