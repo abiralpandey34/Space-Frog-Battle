@@ -5,3 +5,5 @@ This game was developed using Greenfoot which is an integrated development envir
 THe game itself is really simple. It has a main character frog that eats mushroom as a food. Meanwhile an alien follows the frog to kill it so user has to evade alien while eating the food. The time counter & food counter keeps track of time left and food score respectively. 
 
 The controls to move the frog is W-A-S-D or Up-Right-Down-Left arrow. The game is over when frog eats all the mushroom or alien touches the frog.
+
+<img src="https://i.imgur.com/i2tjWgS.png">
