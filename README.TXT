@@ -6,4 +6,4 @@ THe game itself is really simple. It has a main character frog that eats mushroo
 
 The controls to move the frog is W-A-S-D or Up-Right-Down-Left arrow. The game is over when frog eats all the mushroom or alien touches the frog.
 
-<img src="https://i.imgur.com/i2tjWgS.png">
+![alt text](https://i.imgur.com/i2tjWgS.png)
